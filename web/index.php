@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 $app = new Silex\Application();
 $app['debug'] = true;
 
-$app['array'] = function(){
+$app['array'] = $app->share(function(){
      $data = array(
         0 => array("id" => 1, "conteudo" => "Conteudo1"),
         1 => array("id" => 2, "conteudo" => "Conteudo2"),
@@ -23,7 +23,7 @@ $app['array'] = function(){
     );
 
     return $data;
-};
+});
 
 $data = $app['array'];
 
